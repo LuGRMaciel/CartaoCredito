@@ -15,6 +15,7 @@ from sklearn.ensemble import IsolationForest # IsolationForest para detecção d
 from datetime import date                   # Para manipular datas
 import numpy as np                          # Biblioteca para operações numéricas (usada pelo IsolationForest)
 from fastapi.middleware.cors import CORSMiddleware # Middleware para permitir requisições de outros domínios (CORS)
+import logging
 
 # Instancia a aplicação FastAPI
 app = FastAPI()
@@ -35,6 +36,13 @@ Session = sessionmaker(bind=engine)
 class TransacaoInput(BaseModel):
     id_transacao: int
 
+# Configura o arquivo de log da API
+logging.basicConfig(
+    filename='api_interactions.log',
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+
 # Endpoint GET para testar se a API está funcionando
 @app.get("/")
 def home():
@@ -43,6 +51,7 @@ def home():
 # Endpoint POST para analisar fraude em uma transação
 @app.post("/analisa-fraude")
 def analisa_fraude(dados: TransacaoInput):
+    logging.info(f"Análise de fraude solicitada para transação {dados.id_transacao}")
     session = Session()  # Abre uma sessão do banco
     # Busca a transação pelo id informado
     transacao = session.query(Transacoes).filter(Transacoes.id_transacao == dados.id_transacao).first()

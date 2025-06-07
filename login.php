@@ -8,7 +8,7 @@ Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
 */
 ?>
 <?php
-session_start();
+// session_start();
 include('header.php');
 include ('config.php');
 

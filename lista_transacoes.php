@@ -92,6 +92,13 @@ document.querySelectorAll('.btn-contestar').forEach(function(btn) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ id_transacao: id })
             });
+
+            // Log da interação da contestação
+            fetch('log_interacao.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ acao: 'contestar', id_transacao: id })
+            });
         })
         .catch(() => {
             alert('Erro ao analisar a transação. Tente novamente.');
