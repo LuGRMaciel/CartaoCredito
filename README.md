@@ -4,6 +4,4 @@ As ferramentas utilizadas foram FastAPI, XAMPP e MariaDB.
 As linguagens usadas foram: python, php, css, htlm, sql e java script.
 
 Alunos:
-Luana Gonzaga 
-Ketlyn Rayzel
-Augusto Lima
+Luana Gonzaga (172221149), Ketlyn Rayzel (), Augusto Lima ()
