@@ -1,4 +1,13 @@
 <?php
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
+
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+?>
+<?php
 session_start();
 include('header.php');
 include ('config.php');
@@ -36,14 +45,3 @@ if (@$_REQUEST['botao']=="Entrar") {
         <input type="submit" name="botao" value="Entrar" style="width:100%;padding:12px;background:#4CAF50;color:#fff;border:none;border-radius:6px;font-size:1.1em;cursor:pointer;">
     </form>
 </div>
-
-<?php include('footer.php'); ?>
-
-
-
-
-
-
-
-
-

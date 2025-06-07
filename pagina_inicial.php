@@ -1,3 +1,12 @@
+<?php
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
+
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+?>
 <?php 
 include('header.php'); 
 ?>
@@ -9,5 +18,3 @@ include('header.php');
         <a href="cadastrar.php" style="padding:10px 30px;background:#6D2E2A;color:#fff;text-decoration:none;border-radius:6px;font-weight:bold;">Cadastrar</a>
     </div> -->
 </div>
-
-<?php include('footer.php'); ?>

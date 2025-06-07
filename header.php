@@ -1,5 +1,14 @@
 <?php
-session_start();// filepath: c:\xampp\htdocs\ProjetoA3Filipack\header.php
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
+
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+?>
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -7,7 +16,6 @@ session_start();// filepath: c:\xampp\htdocs\ProjetoA3Filipack\header.php
     <meta charset="UTF-8">
     <title>Web de Milhões</title>
     <style>
-        /* Cole aqui o mesmo CSS usado na sua página inicial */
         body {
             background: #d9c2a3;
             font-family: Arial, sans-serif;
@@ -38,7 +46,7 @@ session_start();// filepath: c:\xampp\htdocs\ProjetoA3Filipack\header.php
         .actions {
             text-align: right;
             margin-bottom: 40px;
-            padding-right: 20px; /* opcional, só para afastar um pouco da borda */
+            padding-right: 20px; /* afastar um pouco da borda */
         }
         .actions a {
             display: inline-block;

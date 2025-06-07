@@ -1,17 +1,29 @@
 <?php
-include('header.php'); 
-include ('config.php');
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
 
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+?>
+
+<?php
+include('header.php'); // Inclui o cabeçalho da página
+include('config.php'); // Inclui as configurações de conexão com o banco
+
+// Verifica se o formulário foi enviado
 if (isset($_POST['botao'])){
-    $login  = $_POST['login'];
-    $senha  = $_POST['senha'];
-    $nivel  = $_POST['nivel'];
-    $cpf    = $_POST['cpf'];
+    $login  = $_POST['login'];   // Recebe o login do formulário
+    $senha  = $_POST['senha'];   // Recebe a senha do formulário
+    $nivel  = $_POST['nivel'];   // Recebe o nível do formulário
+    $cpf    = $_POST['cpf'];     // Recebe o CPF do formulário (não está sendo usado no insert)
 
-    // Corrija o INSERT especificando as colunas
+    // Insere o novo usuário na tabela (ajuste o nome da tabela para 'autenticacao' se necessário)
     $query = "INSERT INTO usuario (login, senha, nivel) VALUES ('$login', '$senha', '$nivel')";
     $result = mysqli_query($con, $query);
 
+    // Verifica se o cadastro foi realizado com sucesso
     if($result){
         echo "<script>alert('Usuário cadastrado com sucesso!');window.location='login.php';</script>";
         exit;
@@ -40,5 +52,3 @@ if (isset($_POST['botao'])){
         <input type="submit" name="botao" value="Cadastrar" style="width:100%;padding:12px;background:#4CAF50;color:#fff;border:none;border-radius:6px;font-size:1.1em;cursor:pointer;">
     </form>
 </div>
-
-<?php include('footer.php'); ?>

@@ -1,4 +1,13 @@
 <?php
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
+
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+?>
+<?php
 include('header.php');
 
 // Recupera o ID do usuário da sessão
@@ -6,20 +15,6 @@ $id_usuario = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
 ?>
 <div class="container">
     <h1 class="titulo-principal">Portal Bradesco Cartões</h1>
-
-    <!-- <?php
-    if ($id_usuario) {
-        echo "<div class='usuario-logado' style='text-align:center;margin-bottom:20px;'>";
-        echo "<strong>Bem-vindo, " . htmlspecialchars($_SESSION["nome_usuario"]) . "!</strong>";
-        echo "<br><a href='logout.php' style='color:#6D2E2A;text-decoration:none;'>Sair</a>";
-        echo "</div>";
-    } else {
-        echo "<div class='usuario-nao-logado' style='text-align:center;margin-bottom:20px;'>";
-        echo "<strong>Você não está logado.</strong>";
-        echo "<br><a href='login.php' style='color:#6D2E2A;text-decoration:none;'>Faça login</a> ou <a href='cadastrar.php' style='color:#6D2E2A;text-decoration:none;'>cadastre-se</a>.";
-        echo "</div>";
-    }
-    ?> -->
 
     <form method="get" style="max-width:400px;margin:0 auto 30px auto;display:flex;gap:10px;">
         <input type="text" name="busca" placeholder="Pesquisar por estabelecimento, data ou valor" style="flex:1;padding:10px;border:1px solid #ccc;border-radius:6px;">
@@ -30,13 +25,14 @@ $id_usuario = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
         <?php
         include('config.php');
 
+        // Monta filtro de busca se houver pesquisa
         $filtro = "";
         if (isset($_GET['busca']) && $_GET['busca'] != "") {
             $busca = mysqli_real_escape_string($con, $_GET['busca']);
             $filtro = "AND (estabelecimento LIKE '%$busca%' OR valor LIKE '%$busca%' OR DATE_FORMAT(data, '%d/%m/%Y') LIKE '%$busca%')";
         }
 
-        // Use id_usuario no filtro
+        // Busca transações do usuário logado, aplicando filtro se houver
         $query = "SELECT * FROM transacoes WHERE id_usuario = '$id_usuario' $filtro ORDER BY data DESC";
         $result = mysqli_query($con, $query);
 
@@ -51,7 +47,7 @@ $id_usuario = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
                 echo "<h2>" . htmlspecialchars($anuncio['data']) . "</h2>";
                 echo "<p>" . htmlspecialchars($anuncio['estabelecimento']) . "</p>";
                 echo "<div class='valor'>R$ " . htmlspecialchars($anuncio['valor']) . "</div>";
-                // Botão contestar com atributos data
+                // Botão para contestar a transação, envia o id_transacao via data-id
                 echo "<button class='btn-contestar' data-id='" . htmlspecialchars($anuncio['id_transacao']) . "'>Contestar</button>";
                 echo "</div>";
             }
@@ -61,10 +57,12 @@ $id_usuario = isset($_SESSION['id_usuario']) ? $_SESSION['id_usuario'] : null;
 </div>
 
 <script>
+// Adiciona evento de clique para todos os botões "Contestar"
 document.querySelectorAll('.btn-contestar').forEach(function(btn) {
     btn.addEventListener('click', function() {
         const id = this.dataset.id;
 
+        // Chama a API Python para analisar fraude
         fetch('http://127.0.0.1:8000/analisa-fraude', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -82,13 +80,13 @@ document.querySelectorAll('.btn-contestar').forEach(function(btn) {
                         <strong>Transação normal, se ainda precisa de ajuda, entre em contato com a Bia :)</strong><br>${data.motivo}
                        </div>`;
             }
-            // Mostra mensagem estilizada logo após o botão
+            // Mostra mensagem estilizada logo após o botão clicado
             const div = document.createElement('div');
             div.innerHTML = msg;
             btn.parentNode.insertBefore(div, btn.nextSibling);
             setTimeout(() => div.remove(), 4000);
 
-            // Registra contestação no banco
+            // Registra contestação no banco via API Python
             fetch('http://127.0.0.1:8000/registrar-contestacao', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -101,5 +99,3 @@ document.querySelectorAll('.btn-contestar').forEach(function(btn) {
     });
 });
 </script>
-
-<?php include('footer.php'); ?>

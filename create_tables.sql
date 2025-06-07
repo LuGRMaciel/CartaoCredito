@@ -1,9 +1,18 @@
-C:\xampp\mysql\bin\mysql -u root -p
+/*
+Projeto A3 - Sistemas Distribuídos e Mobile (Unicuritiba & Bradesco)
+
+Repositório destinado ao projeto A3 da unidade curricular de Sistemas Distribuídos e Mobile da Unicuritiba em parceria com o Bradesco, que visa a construção de um sistema para verificação de fraudes em contestações de transações de cartão de crédito.
+Ferramentas utilizadas: FastAPI, XAMPP e MariaDB.
+Linguagens usadas: Python, PHP, CSS, HTML, SQL e JavaScript.
+*/
+
+
+-- Script para criação das tabelas do banco de dados do projeto A3
+-- Criando o banco de dados e as tabelas necessárias
 
 create database cartao_credito;
 use cartao_credito;
 
-drop table if exists autenticacao;
 CREATE TABLE autenticacao (
     id_usuario int(20) auto_increment PRIMARY KEY,
     login VARCHAR(50) UNIQUE NOT NULL,
@@ -42,29 +51,95 @@ CREATE TABLE transacoes (
 );
 
 INSERT INTO transacoes (
-    id_transacao, id_usuario, data, hora, estabelecimento, valor, cidade, forma_pagamento, parcelas, tipo_cartao, vencimento_fatura
+    id_usuario, data, hora, estabelecimento, valor, cidade, forma_pagamento, parcelas, tipo_cartao, vencimento_fatura
 ) VALUES
-(31, 2, '2025-04-07', '13:41:00', 'Supermercado Y', 311.54, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01'),
-(34, 2, '2025-04-07', '20:36:00', 'Farmácia A', 31.04, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(6, 2, '2025-04-08', '13:05:00', 'Café Central', 52.28, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(100, 2, '2025-04-08', '14:35:00', 'Loja_online_2', 320.38, 'Curitiba', 'parcelado', 2, 'virtual', '2025-05-01'),
-(59, 2, '2025-04-08', '14:55:00', 'Pet Shop', 188.21, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01'),
-(22, 2, '2025-04-08', '19:31:00', 'Posto B', 256.67, 'Curitiba', 'parcelado', 4, 'físico', '2025-05-01'),
-(33, 2, '2025-04-09', '19:28:00', 'Café Central', 11.67, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(88, 2, '2025-04-10', '12:48:00', 'Academia Fit', 242.8, 'Curitiba', 'parcelado', 3, 'físico', '2025-05-01'),
-(70, 2, '2025-04-10', '13:43:00', 'Café Central', 43.18, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(48, 2, '2025-04-10', '16:31:00', 'Restaurante Z', 101.97, 'Florianópolis', 'parcelado', 2, 'físico', '2025-05-01'),
-(5, 2, '2025-04-10', '21:03:00', 'Cinema', 69.29, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(79, 2, '2025-04-11', '14:12:00', 'Cinema', 43.57, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(61, 2, '2025-04-12', '13:11:00', 'Academia Fit', 146.18, 'Curitiba', 'parcelado', 4, 'físico', '2025-05-01'),
-(8, 2, '2025-04-12', '19:20:00', 'Restaurante Z', 245.77, 'Curitiba', 'parcelado', 10, 'físico', '2025-05-01'),
-(21, 2, '2025-04-12', '09:32:00', 'Loja_online_1', 782.84, 'Curitiba', 'parcelado', 4, 'virtual', '2025-05-01'),
-(28, 2, '2025-04-13', '10:20:00', 'Loja X', 353.7, 'Curitiba', 'parcelado', 3, 'físico', '2025-05-01'),
-(54, 2, '2025-04-13', '21:09:00', 'Posto B', 350.75, 'Curitiba', 'parcelado', 4, 'físico', '2025-05-01'),
-(9, 2, '2025-04-15', '16:16:00', 'Restaurante Z', 86.96, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
-(37, 2, '2025-04-16', '12:19:00', 'Loja_online_1', 256.84, 'Curitiba', 'parcelado', 3, 'virtual', '2025-05-01'),
-(56, 2, '2025-04-16', '20:27:00', 'Posto B', 382.61, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01');
-
+(2, '2025-04-01', '10:15:00', 'Supermercado Y', 120.50, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-02', '12:30:00', 'Farmácia A', 35.90, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-03', '14:45:00', 'Café Central', 22.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-04', '16:00:00', 'Loja_online_2', 320.38, 'Curitiba', 'parcelado', 2, 'virtual', '2025-05-01'),
+(2, '2025-04-05', '18:10:00', 'Pet Shop', 188.21, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01'),
+(3, '2025-04-01', '09:20:00', 'Supermercado Y', 110.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-02', '11:35:00', 'Farmácia A', 40.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-03', '13:50:00', 'Café Central', 25.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-04', '15:05:00', 'Loja_online_2', 210.00, 'Curitiba', 'parcelado', 2, 'virtual', '2025-05-01'),
+(3, '2025-04-05', '17:15:00', 'Pet Shop', 150.00, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01'),
+(4, '2025-04-01', '08:25:00', 'Supermercado Y', 130.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-02', '10:40:00', 'Farmácia A', 38.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-03', '12:55:00', 'Café Central', 28.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-04', '14:10:00', 'Loja_online_2', 180.00, 'Curitiba', 'parcelado', 2, 'virtual', '2025-05-01'),
+(4, '2025-04-05', '16:20:00', 'Pet Shop', 170.00, 'Curitiba', 'parcelado', 2, 'físico', '2025-05-01'),
+(2, '2025-04-06', '00:00:00', 'Estab_1', 75.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-07', '01:00:00', 'Estab_2', 80.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-08', '02:00:00', 'Estab_3', 85.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-09', '03:00:00', 'Estab_4', 90.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-10', '04:00:00', 'Estab_5', 95.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-11', '05:00:00', 'Estab_6', 100.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-12', '06:00:00', 'Estab_7', 105.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-13', '07:00:00', 'Estab_8', 110.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-14', '08:00:00', 'Estab_9', 115.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-15', '09:00:00', 'Estab_10', 120.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-16', '10:00:00', 'Estab_11', 125.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-17', '11:00:00', 'Estab_12', 130.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-18', '12:00:00', 'Estab_13', 135.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-19', '13:00:00', 'Estab_14', 140.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-20', '14:00:00', 'Estab_15', 145.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-21', '15:00:00', 'Estab_16', 150.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-22', '16:00:00', 'Estab_17', 155.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-23', '17:00:00', 'Estab_18', 160.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-24', '18:00:00', 'Estab_19', 165.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-25', '19:00:00', 'Estab_20', 170.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-26', '20:00:00', 'Estab_21', 175.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-27', '21:00:00', 'Estab_22', 180.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-28', '22:00:00', 'Estab_23', 185.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(2, '2025-04-29', '23:00:00', 'Estab_24', 190.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-06', '00:00:00', 'Estab_1', 75.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-07', '01:00:00', 'Estab_2', 80.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-08', '02:00:00', 'Estab_3', 85.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-09', '03:00:00', 'Estab_4', 90.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-10', '04:00:00', 'Estab_5', 95.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-11', '05:00:00', 'Estab_6', 100.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-12', '06:00:00', 'Estab_7', 105.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-13', '07:00:00', 'Estab_8', 110.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-14', '08:00:00', 'Estab_9', 115.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-15', '09:00:00', 'Estab_10', 120.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-16', '10:00:00', 'Estab_11', 125.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-17', '11:00:00', 'Estab_12', 130.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-18', '12:00:00', 'Estab_13', 135.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-19', '13:00:00', 'Estab_14', 140.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-20', '14:00:00', 'Estab_15', 145.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-21', '15:00:00', 'Estab_16', 150.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-22', '16:00:00', 'Estab_17', 155.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-23', '17:00:00', 'Estab_18', 160.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-24', '18:00:00', 'Estab_19', 165.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-25', '19:00:00', 'Estab_20', 170.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-26', '20:00:00', 'Estab_21', 175.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-27', '21:00:00', 'Estab_22', 180.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-28', '22:00:00', 'Estab_23', 185.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(3, '2025-04-29', '23:00:00', 'Estab_24', 190.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-06', '00:00:00', 'Estab_1', 75.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-07', '01:00:00', 'Estab_2', 80.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-08', '02:00:00', 'Estab_3', 85.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-09', '03:00:00', 'Estab_4', 90.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-10', '04:00:00', 'Estab_5', 95.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-11', '05:00:00', 'Estab_6', 100.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-12', '06:00:00', 'Estab_7', 105.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-13', '07:00:00', 'Estab_8', 110.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-14', '08:00:00', 'Estab_9', 115.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-15', '09:00:00', 'Estab_10', 120.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-16', '10:00:00', 'Estab_11', 125.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-17', '11:00:00', 'Estab_12', 130.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-18', '12:00:00', 'Estab_13', 135.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-19', '13:00:00', 'Estab_14', 140.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-20', '14:00:00', 'Estab_15', 145.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-21', '15:00:00', 'Estab_16', 150.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-22', '16:00:00', 'Estab_17', 155.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-23', '17:00:00', 'Estab_18', 160.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-24', '18:00:00', 'Estab_19', 165.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-25', '19:00:00', 'Estab_20', 170.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-26', '20:00:00', 'Estab_21', 175.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-27', '21:00:00', 'Estab_22', 180.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-28', '22:00:00', 'Estab_23', 185.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01'),
+(4, '2025-04-29', '23:00:00', 'Estab_24', 190.00, 'Curitiba', 'à vista', 1, 'físico', '2025-05-01');
 
  CREATE TABLE historico_contestacao (
     id_contestacao int(20) auto_increment PRIMARY KEY,
@@ -73,28 +148,3 @@ INSERT INTO transacoes (
     fraudulenta VARCHAR(10),
     comentario varchar(255)
 );
-------------------------------------------------------------------------------------------------
-create database sistema;
-
-create table anuncios (
-    id_anuncio int(5) auto_increment, 
-    titulo varchar(50), 
-    valor decimal(22,2), 
-    descricao varchar(250), 
-    id_usuario int(3), 
-    data date, 
-    nome_imagem varchar(500), 
-    indicador_aprovacao boolean, 
-
-primary key(id_anuncio));
-
-create table usuario (
-    id int(3) auto_increment, 
-    login varchar(15), 
-    senha varchar(70), 
-    nivel varchar(10), 
-
-primary key (id) );
-
-
-insert into usuario (login, senha, nivel) values ('LuGRMaciel', sha256(), 'ADM');
